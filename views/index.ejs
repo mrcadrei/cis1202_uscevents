@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Font Awesome Start-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- Font Awesome End -->
+		
+		<!-- Google Fonts Start-->
+		<link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Oswald&display=swap" rel="stylesheet">
+		<!-- Google Fonts End -->
+		
+		<!-- CSS Start-->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- CSS End -->
+		
+		<title>USC Events | Home</title>
+	</head>
+	<body>
+		<!-- NavBar Start -->
+		<header>
+			<div class="logo">
+				<h1 class="logo-text"><span class=fir>USC</span>&nbsp;<span class="sec">EVENTS </span><i class="fa fa-calendar"></i></h1>
+			</div>
+			<i class="fa fa-bars menu-toggle"></i>
+			<ul class="nav">
+				<% if(currentRegister.type=="Admin") { %>
+					<li><a href="/index">Home</a></li>
+					<li>
+						<a href="#">
+							<i class="fa fa-user"></i> <%= currentRegister.username %> <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
+						</a>
+						<ul>
+							<li><a href="/createpostsindex">Dashboard</a></li>
+							<li><a href="/" class="logout">Logout <i class="fa fa-sign-out"></i></a></li>
+						</ul>
+					</li>
+				<% } else { %>
+					<li><a href="/index">Home</a></li>
+					<li>
+						<a href="#">
+							<i class="fa fa-user"></i> <%= currentRegister.username %> <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
+						</a>
+						<ul>
+							<li><a href="/" class="logout">Logout <i class="fa fa-sign-out"></i></a></li>
+						</ul>
+					</li>
+				<% } %>
+			</ul>
+		</header>
+		<!-- NavBar End -->
+		
+		<!-- Page Wrapper Start-->
+		<div class="page-wrapper">
+			
+			<!-- Post Slider Start-->
+			<div class="post-slider">
+				<h1 class="slider-title">UPCOMING EVENTS</h1>
+				<i class="fa fa-chevron-left prev"></i>
+				<i class="fa fa-chevron-right next"></i>
+				<div class="post-wrapper">
+					<% post.forEach((posts) => { %>
+						<div class="post">
+							<img src="<%= posts.image %>" class="slider-image">
+							<div class="post-info">
+								<h4><a href="/index/<%= posts.id %>/single"><%= posts.title %></a></h4>
+								<i class="fa fa-user"></i> <%= posts.author %>&nbsp;
+								<i class="fa fa-calendar"></i> <%= posts.date %>
+								<div>
+									<a href="/index/<%= posts.id %>/single" class="btn read-more read">Read More</a>
+								</div>
+							</div>
+						</div>
+					<% }); %>
+				</div>
+			</div>
+			<!-- Post Slider End -->
+			
+			<!-- Content Start -->
+			<div class="content clearfix">
+				
+				<!-- Main Content Start -->
+				<div class="main-content">
+					<h1 class="recent-post-title">RECENT EVENTS</h1>
+					<div class="post clearfix">
+						<img src="BDD.jpg" alt="" class="post-image">
+						<div class="post-preview">
+							<h2><a href="#"> BLOOD DONATION DRIVE 2019</a></h2>
+							<i class="fa fa-user"> Pennywise</i>&nbsp;
+							<i class="fa fa-calendar"> Nov 21, 2019</i>
+							<p class="preview-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<a href="#" class="btn read-more">Read More</a>
+						</div>
+					</div>
+					<div class="post clearfix">
+						<img src="LSS.jpg" alt="" class="post-image">
+						<div class="post-preview">
+							<h2><a href="#"> LIVE SCORE SALIDA 2019</a></h2>
+							<i class="fa fa-user"> Amiel Lozada</i>&nbsp;
+							<i class="fa fa-calendar"> Nov 20, 2019</i>
+							<p class="preview-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<a href="#" class="btn read-more">Read More</a>
+						</div>
+					</div>
+					<div class="post clearfix">
+						<img src="PJ.jpg" alt="" class="post-image">
+						<div class="post-preview">
+							<h2><a href="#"> PRAISE JAM 2019</a></h2>
+							<i class="fa fa-user"> Quiboloy</i>&nbsp;
+							<i class="fa fa-calendar"> Nov 20, 2019</i>
+							<p class="preview-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<a href="#" class="btn read-more">Read More</a>
+						</div>
+					</div>
+					<div class="post clearfix">
+						<img src="GAD.jpg" alt="" class="post-image">
+						<div class="post-preview">
+							<h2><a href="#"> GADJA 2018</a></h2>
+							<i class="fa fa-user"> Tony Stark</i>&nbsp;
+							<i class="fa fa-calendar"> Oct 28, 2018</i>
+							<p class="preview-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<a href="#" class="btn read-more">Read More</a>
+						</div>
+					</div>
+				</div>
+				<!-- Main Content End -->
+			
+			</div>
+			<!-- Content End -->
+		
+		</div>
+		<!-- Page Wrapper End -->
+		
+		<!-- Footer Start -->
+		<div class="footer">
+			<div class="footer-content">
+				<div class="footer-section about">
+					<h1 class="logo-text"><span class="fir">USC</span>&nbsp;<span class="sec">EVENTS</span></h1>
+					<p>USC Events is a website where users can easily find events that are held in the University of San Carlos. It has a simple system design so that users can retrieve information with no difficulty. Users can see upcoming and recent events, and they can also volunteer for their chosen event depending on what role they would like to take. With USC Events, users are always up-to-date with the activities that the university has to offer.</p>
+					<div class="contact">
+						<span><i class="fa fa-phone"></i>&nbsp; 0900 000 0000</span>
+						<span><i class="fa fa-envelope"></i>&nbsp; info@sample.com</span>
+					</div>
+					<div class="socials">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-instagram"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-youtube"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				&copy; USCEvents | Template by Awa Melvine | Edited by Marc Andrei
+			</div>
+		</div>
+		<!-- Footer End -->
+		
+		<!-- JQuery Start-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- JQuery End -->
+		
+		<!-- Slick Carousel Start -->
+		<!-- Link : https://kenwheeler.github.io/slick/ -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<!-- Slick Carousel End -->
+		
+		<!-- Javascript Start-->
+		<script src="script.js"></script>
+		<!-- Javascript End -->
+	</body>
+</html>

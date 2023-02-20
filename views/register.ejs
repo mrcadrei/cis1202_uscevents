@@ -1,0 +1,21 @@
+<%- include ('./partials/header') %>
+	<!-- Authentication Start -->
+	<div class="auth-content">
+		<form action="/register" method="post">
+			<h2 class="form-title">Register</h2>
+			<div>
+				<label>Username</label>
+				<input type="text" name="username" class="text-input" required>
+			</div>
+			<div>
+				<label>Password</label>
+				<input type="password" name="password" class="text-input" required>
+			</div>
+			<div>
+				<button type="submit" name="register-btn" class="btn btn-big">Register</button>
+			</div>
+			<p>Or <a href="/">Login</a></p>
+		</form>
+	</div>
+	<!-- Authentication End -->
+<%- include ('./partials/footer') %>

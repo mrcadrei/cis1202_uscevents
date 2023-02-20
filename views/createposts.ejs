@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Font Awesome Start-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- Font Awesome End -->
+		
+		<!-- Google Fonts Start-->
+		<link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Oswald&display=swap" rel="stylesheet">
+		<!-- Google Fonts End -->
+		
+		<!-- CSS Start-->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="admin.css">
+		<!-- CSS End -->
+		
+		<title>USC Events | Admin Section - Create Post</title>
+	</head>
+	<body>
+		<!-- NavBar Start -->
+		<header>
+			<div class="logo">
+				<h1 class="logo-text"><span class=fir>USC</span>&nbsp;<span class="sec">EVENTS </span><i class="fa fa-calendar"></i></h1>
+			</div>
+			<i class="fa fa-bars menu-toggle"></i>
+			<ul class="nav">
+				<% if(currentRegister.type=="Admin") { %>
+					<li><a href="/index">Home</a></li>
+					<li>
+						<a href="#">
+							<i class="fa fa-user"></i> <%= currentRegister.username %> <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
+						</a>
+						<ul>
+							<li><a href="/createpostsindex">Dashboard</a></li>
+							<li><a href="/" class="logout">Logout <i class="fa fa-sign-out"></i></a></li>
+						</ul>
+					</li>
+				<% } else { %>
+					<li><a href="/index">Home</a></li>
+					<li>
+						<a href="#">
+							<i class="fa fa-user"></i> <%= currentRegister.username %> <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
+						</a>
+						<ul>
+							<li><a href="/" class="logout">Logout <i class="fa fa-sign-out"></i></a></li>
+						</ul>
+					</li>
+				<% } %>
+			</ul>
+		</header>
+		<!-- NavBar End -->
+		
+		<!-- Admin Page Wrapper Start-->
+		<div class="admin-wrapper">
+			
+			<!-- Left Sidebar Start -->
+			<div class="left-sidebar">
+				<ul>
+					<li><a href="/createpostsindex">Manage Posts</a></li>
+					<li><a href="/createvolunteersindex">Manage Volunteers</a></li>
+				</ul>
+			</div>
+			<!-- Left Sidebar End -->
+			
+			<!-- Admin Content Start -->
+			<div class="admin-content">
+				<div class="button-group">
+					<a href="/createpostsindex" class="btn btn-big btn2">Manage Posts</a>
+				</div>
+				<div class="content">
+					<h2 class="page-title">Create Post</h2>
+					<form action="/createpostsindex" method="post">
+						<div>
+							<label>Author</label>
+							<input type="text" name="post[author]" class="admin-text-input" required>
+						</div>
+						<div>
+							<label>Title</label>
+							<input type="text" name="post[title]" class="admin-text-input" required>
+						</div>
+						<div>
+							<label>Body</label>
+							<textarea name="post[body]" id="body" class="admin-text-input"></textarea>
+						</div>
+						<div>
+							<label>Image Link</label>
+							<input type="text" name="post[image]" class="admin-text-input">
+						</div>
+						<div>
+							<label>Type</label>
+							<select name="post[category]" class="admin-text-input">
+								<option value="Event">Event</option>
+								<!-- <option value="Announcement">Announcement</option> -->
+							</select>
+						</div>
+						<div>
+							<label>Date</label>
+							<input type="text" name="post[date]" class="admin-text-input" required>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-big btn3">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- Admin Content End -->
+		
+		</div>
+		<!-- Admin Page Wrapper End -->
+		
+		<!-- JQuery Start-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- JQuery End -->
+		
+		<!-- Ckeditor Start -->
+		<script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script>
+		<!-- Ckeditor End -->
+		
+		<!-- Javascript Start-->
+		<script src="script.js"></script>
+		<!-- Javascript End -->
+	</body>
+</html>

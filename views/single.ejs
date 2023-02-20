@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Font Awesome Start-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- Font Awesome End -->
+		
+		<!-- Google Fonts Start-->
+		<link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Oswald&display=swap" rel="stylesheet">
+		<!-- Google Fonts End -->
+		
+		<!-- CSS Start-->
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<!-- CSS End -->
+		
+		<title>USC Events | Event Post</title>
+	</head>
+	<body>
+		<!-- NavBar Start -->
+		<header>
+			<div class="logo">
+				<h1 class="logo-text"><span class=fir>USC</span>&nbsp;<span class="sec">EVENTS </span><i class="fa fa-calendar"></i></h1>
+			</div>
+			<i class="fa fa-bars menu-toggle"></i>
+			<ul class="nav">
+				<% if(currentRegister.type=="Admin") { %>
+					<li><a href="/index">Home</a></li>
+					<li>
+						<a href="#">
+							<i class="fa fa-user"></i> <%= currentRegister.username %> <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
+						</a>
+						<ul>
+							<li><a href="/createpostsindex">Dashboard</a></li>
+							<li><a href="/" class="logout">Logout <i class="fa fa-sign-out"></i></a></li>
+						</ul>
+					</li>
+				<% } else { %>
+					<li><a href="/index">Home</a></li>
+					<li>
+						<a href="#">
+							<i class="fa fa-user"></i> <%= currentRegister.username %> <i class="fa fa-chevron-down" style="font-size: 0.8em;"></i>
+						</a>
+						<ul>
+							<li><a href="/" class="logout">Logout <i class="fa fa-sign-out"></i></a></li>
+						</ul>
+					</li>
+				<% } %>
+			</ul>
+		</header>
+		<!-- NavBar End -->
+		
+		<!-- Page Wrapper Start-->
+		<div class="page-wrapper">
+			
+			<!-- Content Start -->
+			<div class="content clearfix">
+				
+				<!-- Main Content Wrapper Start -->
+				<div class="main-content-wrapper">
+					<div class="main-content single main">
+						<h1 class="post-title"><%= values.title %></h1>
+						<div class="post-content">
+							<p><%= values.body %></p>
+						</div>
+					</div>
+				</div>
+				<!-- Main Content Wrapper End -->
+				
+				<!-- Sidebar Start -->
+				<div class="sidebar single">
+					<div class="section popular">
+						<h2 class="section-title">More Events</h2>
+						<% post.forEach((posts) => { %>
+							<div class="post clearfix">
+								<img src="<%= posts.image %>" alt="">
+								<a href="#" class="title"><h4><%= posts.title %></h4></a>
+							</div>
+						<% }); %>
+					</div>
+					<div id="myoverlay" class="overlay">
+						<span class="closebtn" onclick="closeForm()" title="Close Overlay"> &#215 </span>
+						<div class="wrap">
+							<h2>VOLUNTEER FORM</h2>
+							<form action="/index" method="post">
+								<label>ID Number</label>
+								<input type="text" name="volunteer[idnumber]" placeholder="ID" required>
+								<label>First Name</label>
+								<input type="text" name="volunteer[firstname]" placeholder="First Name" required>
+								<label>Last Name</label>
+								<input type="text" name="volunteer[lastname]" placeholder="Last Name" required>
+								<label>Department</label>
+								<input type="text" name="volunteer[department]" placeholder="Department" required>
+								<label>Course</label>
+								<input type="text" name="volunteer[course]" placeholder="Course" required>
+								<label>Year</label>
+								<input type="text" name="volunteer[year]" placeholder="Year" required>
+								<label>Email</label>
+								<input type="email" name="volunteer[email]" placeholder="@gmail.com, etc." required>
+								<label>Contact</label>
+								<input type="tel" name="volunteer[contact]" placeholder="09** *** ****" required>
+								<label>Event Name</label>
+								<input type="text" name="volunteer[eventname]" placeholder="Event Name" required>
+								<label>Apply Role</label>
+								<select name="volunteer[role]" class="text-input">
+									<option value="Media">Media</option>
+									<option value="Documentation">Documentation</option>
+									<option value="Medical">Medical</option>
+								</select>
+								<input type="submit" value="Volunteer" class="btn btn-big btn4">
+							</form>
+						</div>
+					</div>
+					<div class="volunteer-btn">
+						<button class="openbtn" onclick="openForm()">VOLUNTEER</button>
+					</div>
+				</div>
+				<!-- SideBar End -->
+			
+			</div>
+			<!-- Content End -->
+		
+		</div>
+		<!-- Page Wrapper End -->
+
+		<!-- Footer Start -->
+		<div class="footer">
+			<div class="footer-content">
+				<div class="footer-section about">
+					<h1 class="logo-text"><span class="fir">USC</span>&nbsp;<span class="sec">EVENTS</span></h1>
+					<p>USC Events is a website where users can easily find events that are held in the University of San Carlos. It has a simple system design so that users can retrieve information with no difficulty. Users can see upcoming and recent events, and they can also volunteer for their chosen event depending on what role they would like to take. With USC Events, users are always up-to-date with the activities that the university has to offer.</p>
+					<div class="contact">
+						<span><i class="fa fa-phone"></i>&nbsp; 0900 000 0000</span>
+						<span><i class="fa fa-envelope"></i>&nbsp; info@sample.com</span>
+					</div>
+					<div class="socials">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-instagram"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-youtube"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				&copy; USCEvents | Template by Awa Melvine | Edited by Marc Andrei
+			</div>
+		</div>
+		<!-- Footer End -->
+		
+		<!-- JQuery Start-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- JQuery End -->
+		
+		<!-- Slick Carousel Start -->
+		<!-- Link : https://kenwheeler.github.io/slick/ -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<!-- Slick Carousel End -->
+		
+		<!-- Javascript Start-->
+		<script src="/script.js"></script>
+		<!-- Javascript End -->
+	</body>
+</html>
